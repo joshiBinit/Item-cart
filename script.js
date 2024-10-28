@@ -1,7 +1,7 @@
-let itemCount = 0; // Track serial number
-let grossAmount = 0; // Track gross amount
-let totalDiscount = 0; // Track total discount
-let netAmount = 0; // Track net amount
+let itemCount = 0;
+let grossAmount = 0; 
+let totalDiscount = 0;
+let netAmount = 0; 
 
 function addItem() {
     // Get input values
@@ -10,39 +10,45 @@ function addItem() {
     const priceInput = document.getElementById("price");
     const itemName = itemNameInput.value;
 
-    // Validate inputs and highlight if invalid
-    let isValid = true;
-
-    if (!itemName) {
-        itemNameInput.style.border = "2px solid red"; // Highlight empty input
-        isValid = false;
+    
+    // Function to validate input and highlight if invalid
+function validateInput(input, value) {
+    if (!value || value <= 0 || isNaN(value)) {
+        input.style.border = "2px solid red"; // Highlight invalid input
+        return false;
     } else {
-        itemNameInput.style.border = ""; // Clear highlight
+        input.style.border = ""; // Clear highlight
+        return true;
     }
+}
 
+// Retrieve values
     const quantity = parseInt(quantityInput.value);
     const price = parseFloat(priceInput.value);
 
-    if (quantity <= 0 || isNaN(quantity)) {
-        quantityInput.style.border = "2px solid red"; // Highlight invalid quantity
-        isValid = false;
-    } else {
-        quantityInput.style.border = ""; // Clear highlight
-    }
+// Perform validations
+    let isValid = true;
 
-    if (price <= 0 || isNaN(price)) {
-        priceInput.style.border = "2px solid red"; // Highlight invalid price
-        isValid = false;
-    } else {
-        priceInput.style.border = ""; // Clear highlight
-    }
+if (!itemName) {
+    itemNameInput.style.border = "2px solid red";
+    isValid = false;
+} else {
+    itemNameInput.style.border = ""; 
+}
 
-    // If any input is invalid, return early
-    if (!isValid) {
-        return;
-    }
+const isQuantityValid = validateInput(quantityInput, quantity);
+const isPriceValid = validateInput(priceInput, price);
 
-    // Increment serial number
+// Update overall validation status
+isValid = isValid && isQuantityValid && isPriceValid;
+
+// If any input is invalid, return early
+if (!isValid) {
+    return;
+}
+
+// Continue with further processing if all inputs are valid
+
     itemCount++;
 
     // Create a new row in the table
@@ -56,7 +62,7 @@ function addItem() {
     const cellPrice = newRow.insertCell(3);
     const cellTotal = newRow.insertCell(4);
     const cellDiscounted = newRow.insertCell(5);
-    const cellConfirm = newRow.insertCell(6); // New cell for Confirm Button
+    const cellConfirm = newRow.insertCell(6);
 
     // Create checkbox and serial number
     const checkbox = document.createElement("input");
@@ -106,9 +112,9 @@ function toggleEdit(row, checkbox) {
     const quantityCell = row.cells[2];
     const priceCell = row.cells[3];
 
-    itemNameCell.contentEditable = checkbox.checked; // Item Name
-    quantityCell.contentEditable = checkbox.checked; // Quantity
-    priceCell.contentEditable = checkbox.checked; // Price
+    itemNameCell.contentEditable = checkbox.checked;
+    quantityCell.contentEditable = checkbox.checked;
+    priceCell.contentEditable = checkbox.checked;
 
     // If the checkbox is checked, prevent showing blank input initially
     if (checkbox.checked) {
@@ -138,21 +144,21 @@ function confirmChanges(row, confirmButton, checkbox) {
     // Set to 0 if the input is empty after confirmation
     if (isNaN(quantity) || quantity === 0) {
         quantity = 0;
-        quantityCell.innerText = quantity; // Update to 0
+        quantityCell.innerText = quantity;
     }
     
     if (isNaN(price) || price === 0) {
         price = 0;
-        priceCell.innerText = price.toFixed(2); // Update to 0
+        priceCell.innerText = price.toFixed(2);
     } else {
-        priceCell.innerText = price.toFixed(2); // Ensure it's formatted
+        priceCell.innerText = price.toFixed(2);
     }
     
     // Update total and discounted prices
     updatePriceDetails(row.cells[4], row.cells[5], quantity, price);
     
     // Disable editing after confirmation
-    row.cells[1].contentEditable = false;
+    itemNameCell.contentEditable = false;
     quantityCell.contentEditable = false;
     priceCell.contentEditable = false;
 
@@ -194,9 +200,9 @@ function updateTotals(quantity, price) {
 // Update totals after editing an item
 function updateTotalsAfterEdit(quantity, price) {
     // Recalculate totals
-    grossAmount = 0; // Reset
-    totalDiscount = 0; // Reset
-    netAmount = 0; // Reset
+    grossAmount = 0; 
+    totalDiscount = 0;
+    netAmount = 0;
 
     // Iterate through each row to recalculate the totals
     const rows = document.querySelectorAll("#cartTable tbody tr");
@@ -221,11 +227,6 @@ function updateTotalsAfterEdit(quantity, price) {
 function saveCartDetails() {
     const cartDetails = {
         items: [],
-        totals: {
-            grossAmount: grossAmount.toFixed(2),
-            totalDiscount: totalDiscount.toFixed(2),
-            netAmount: netAmount.toFixed(2)
-        }
     };
 
     const rows = document.querySelectorAll("#cartTable tbody tr");
@@ -243,7 +244,7 @@ function saveCartDetails() {
     localStorage.setItem("cartDetails", JSON.stringify(cartDetails));
 
     // Redirect to cart.html
-    window.location.href = "cart.html";
+    location.href = "cart.html";
 }
 
 // Attach saveCartDetails to the save button

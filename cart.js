@@ -5,7 +5,7 @@ const selectedItems = [];
 // Function to display items in the grid
 function displayCartItems(itemsToDisplay) {
     const itemGrid = document.getElementById("itemGrid");
-    itemGrid.innerHTML = ""; // Clear existing items
+    itemGrid.innerHTML = ""; 
 
     if (itemsToDisplay && itemsToDisplay.length > 0) {
         itemsToDisplay.forEach(item => {
@@ -60,7 +60,7 @@ function removeItem(itemName) {
 // Function to update the selected items table
 function updateSelectedItemsTable() {
     const selectedItemsTableBody = document.querySelector("#selectedItemsTable tbody");
-    selectedItemsTableBody.innerHTML = ""; // Clear existing rows
+    selectedItemsTableBody.innerHTML = "";
 
     selectedItems.forEach(item => {
         const row = document.createElement("tr");
