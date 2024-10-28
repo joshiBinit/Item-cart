@@ -1,0 +1,124 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+h2, h3 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Flex container for the form and table */
+.container {
+    display: flex;
+    justify-content: space-between; /* Space between items */
+    margin: 20px;
+}
+
+/* Style for the form container */
+.form-container {
+    max-width: 400px; /* Set a max-width for the form */
+    margin-right: 20px; /* Space between the form and table */
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+label {
+    font-size: 18px; /* Increase label font size */
+}
+
+/* Input styling */
+input[type="text"],
+input[type="number"] {
+    width: calc(100% - 22px); /* Make input fields wider */
+    padding: 15px; /* Increase padding for larger input size */
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 18px; /* Increase font size for text inside input fields */
+    transition: border-color 0.3s;
+}
+
+/* Input focus styling */
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    font-size: 18px; /* Increase button text size */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Table container styling */
+.table-container {
+    flex-grow: 1; /* Allow the table container to take up remaining space */
+    max-width: 800px; /* Set max-width for table */
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Totals container styling */
+.totals-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.totals-container p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Save button styling */
+#saveButton {
+    background-color: #28a745;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Save button hover effect */
+#saveButton:hover {
+    background-color: #218838;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Details</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+    <h2>Cart Items</h2>
+    
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Search items..." oninput="filterItems()">
+    </div>
+
+    <div class="grid-container" id="itemGrid">
+        <!-- Item details will be dynamically inserted here -->
+    </div>
+
+    <h3>Selected Items</h3>
+    <table id="selectedItemsTable">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Selected items will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <script src="cart.js"></script>
+</body>
+</html>

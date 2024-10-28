@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="saveButton" onclick="saveCartDetails()">Save</button>
+
+    <div class="container"> <!-- Flex container -->
+        <div class="form-container">
+            <h2>Add Item to Cart</h2>
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="itemName" placeholder="Enter item name" required><br><br>
+            
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" min="1" placeholder="Enter quantity" required><br><br>
+            
+            <label for="price">Price:</label>
+            <input type="number" id="price" step="0.01" min="0" placeholder="Enter price per item" required><br><br>
+            
+            <button onclick="addItem()">Add Item</button>
+        </div>
+
+        <div class="table-container" style="display: none;">
+            <h3>Cart</h3>
+            <table id="cartTable">
+                <thead>
+                    <tr>
+                        <th>Sn</th>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Price(Rs)</th>
+                        <th>Total(Rs)</th>
+                        <th>Discount (10%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically here -->
+                </tbody>
+            </table>
+
+            <div class="totals-container">
+                <h3>Totals</h3>
+                <p id="grossAmount">Gross Amount: Rs 0.00</p>
+                <p id="totalDiscount">Total Discount: Rs 0.00</p>
+                <p id="netAmount">Net Amount: Rs 0.00</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
